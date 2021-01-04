@@ -1,2 +1,3 @@
 # docker-practice
-blah
+
+my mental notes for docker
