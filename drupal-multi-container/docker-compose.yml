@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  drupal:
+    build:
+      context: .
+      dockerfile: dockerfile
+    image: custom-drupal
+    ports:
+      - "8080:80"
+    volumes:
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles
+      - drupal-themes:/var/www/html/themes
+      - drupal-sites:/var/www/html/sites
+
+  postgres:
+    image: postgres:12
+    environment: # setting up required env viariable 
+      - POSTGRES_PASSWORD=example
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
+    
+
+volumes:  # creating volumes
+  drupal-modules:
+  drupal-profiles:
+  drupal-themes:
+  drupal-sites:
+  drupal-data:
+
+
