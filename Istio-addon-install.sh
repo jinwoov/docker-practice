@@ -3,32 +3,38 @@ function USERANSWER()
     case $1 in
         [1] )
             HEADER "Installing Jaeger";
+            sleep 0.5s
             kubectl apply -f ISTIO/jaeger-install.yaml
             ;;
         [2] )
             HEADER "Installing Kiali";
+            sleep 0.5s
             kubectl apply -f ISTIO/kiali-install.yaml
             ;;
         [3] )
-            HEADER "Install Grafana"
+            HEADER "Installing Grafana"
+            sleep 0.5s
             kubectl apply -f ISTIO/grafana-install.yaml;
             ;;
         [4] )
-            HEADER "Install Prometheus"
+            HEADER "Installing Prometheus"
+            sleep 0.5s
             kubectl apply -f ISTIO/prometheus.yaml;
             ;;
         [5] )
-            HEADER "Install Zipkin"
+            HEADER "Installing Zipkin"
+            sleep 0.5s
             kubectl apply -f ISTIO/zipkin-install.yaml;
             ;;
         [6] )
-            HEADER "Install Label-injection"
-            sh ISTIO/label-inejection.sh;
+            HEADER "Installing Label-injection"
+            sleep 0.5s
+            kubectl apply -f ISTIO/istio-ns-label.yaml;
             ;;
         *)
-            echo "exiting......"
-            sleep 1.5s
-            exit 0
+            echo "exiting......";
+            sleep 1.5s;
+            exit 0;
             ;;
     esac
 }
